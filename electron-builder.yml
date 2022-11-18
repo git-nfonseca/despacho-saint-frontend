@@ -1,0 +1,13 @@
+appId: com.example.nextron
+productName: Despacho-Saint
+copyright: Copyright © 2022 Disimport
+directories:
+  output: dist
+  buildResources: resources
+files:
+  - from: .
+    filter:
+      - package.json
+      - app
+publish: null
+

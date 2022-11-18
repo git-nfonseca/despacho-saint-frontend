@@ -1,0 +1,36 @@
+{
+  "private": true,
+  "name": "despacho-saint-frontend",
+  "description": "Despacho Saint",
+  "version": "1.0.0",
+  "author": "Nelson Fonseca <neflfonseca@gmail.com>",
+  "main": "app/background.js",
+  "scripts": {
+    "dev": "nextron",
+    "build": "nextron build",
+    "postinstall": "electron-builder install-app-deps"
+  },
+  "dependencies": {
+    "axios": "^1.1.3",
+    "chart": "^0.1.2",
+    "electron-serve": "^1.1.0",
+    "electron-store": "^8.1.0",
+    "react-cookie": "^4.1.1",
+    "react-toastify": "^9.1.1",
+    "sass": "^1.55.0",
+    "styled-components": "^5.3.6",
+    "swr": "^1.3.0"
+  },
+  "devDependencies": {
+    "electron": "^21.2.1",
+    "electron-builder": "^23.6.0",
+    "next": "13.0.0",
+    "nextron": "^8.2.0",
+    "primeflex": "^3.2.1",
+    "primeicons": "^6.0.1",
+    "primereact": "^8.6.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-transition-group": "^4.4.5"
+  }
+}
