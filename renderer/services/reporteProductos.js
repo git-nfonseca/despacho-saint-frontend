@@ -11,7 +11,7 @@ export function generateProductsPDF(productos) {
   const doc = new jsPDF();
 
 
-  let empresa, rif, direc1, direc2, telfono;
+  let empresa, rif, direc1, direc2, telfono, fecha, numdespacho;
 
   // define the columns we want and their titles
   const tableColumn = ["Código", "Descripcion", "Cantidad"];
@@ -23,6 +23,8 @@ export function generateProductsPDF(productos) {
   direc2 = ''
   rif = 'J-'
   telfono = productos[0].Telef
+  fecha = productos[0].FechaE
+  numdespacho = productos[0].numdespacho
 
   // for each ticket pass all its data into an array
   /*cxc.forEach(item => {
@@ -51,16 +53,18 @@ export function generateProductsPDF(productos) {
   doc.text(rif, 15, 12)
   doc.text(direc1, 15, 16)
   doc.text(direc2, 15, 20)
-  //doc.text(telf, 15, 24)
+  doc.text('Despacho #: ' + numdespacho , 15, 24)
+  doc.text('Fecha: ' + fecha , 80, 24)
+
   doc.setFontSize(12)
   let titulo = "Listado de Productos a despachar"
   let textX = (doc.internal.pageSize.getWidth() - doc.getTextWidth(titulo))/2
-   doc.text(titulo, textX, 26);
+   doc.text(titulo, textX, 30);
   // we define the name of our PDF file.
   doc.autoTable({
     head: [["Código", "Descripcion", "Cantidad"]],
     body: body,
-    startY: 30 
+    startY: 35 
   });
 
 

@@ -215,8 +215,8 @@ const createdespacho = async (datos) => {
                 'Content-Type': 'application/json',
               }              
             },) 
-            const lista1 = await res.data     
-            console.log(JSON.stringify(lista1))
+            const lista1 = await res.data   
+            //console.log(JSON.stringify(lista1))  
             generateProductsPDF(lista1)
             //setProductos(lista1)
            } catch (error) {

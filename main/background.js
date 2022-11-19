@@ -1,8 +1,9 @@
-import { app } from 'electron';
+import { app  } from 'electron';
 import serve from 'electron-serve';
 import { createWindow } from './helpers';
 
 const isProd = process.env.NODE_ENV === 'production';
+//const win = new BrowserWindow({ titleBarStyle: 'hidden' })
 
 if (isProd) {
   serve({ directory: 'app' });
@@ -15,7 +16,11 @@ if (isProd) {
 
   const mainWindow = createWindow('main', {
     width: 1000,
-    height: 600,
+    height: 600,    
+     minimizable: true,
+     maximizable: true,
+     autoHideMenuBar: true,
+     icon: __dirname + '/icon.ico'
   });
 
   if (isProd) {
