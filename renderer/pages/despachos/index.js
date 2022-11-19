@@ -9,6 +9,7 @@ import { Toolbar } from 'primereact/toolbar'
 import React, { useEffect, useRef, useState } from 'react'
 import axios from "axios"
 import { useRouter } from 'next/router'
+import {generateProductsPDF} from '../../services/reporteProductos'
 
 import path from 'path'
 import { promises as fs } from 'fs'
@@ -42,6 +43,7 @@ const despachos = () => {
     const [selecteddespachos, setSelecteddespachos] = useState(null)
     const [submitted, setSubmitted] = useState(false)
     const [globalFilter, setGlobalFilter] = useState(null)
+    const [productos,setProductos] = useState(null)
     const toast = useRef(null)
     const dt = useRef(null)
     const apiLogin = getConfig().publicRuntimeConfig.api
@@ -199,6 +201,33 @@ const createdespacho = async (datos) => {
         setDeleteProductDialog(true)
     }
 
+    const imprimirProductos = async (despacho) => {
+        
+        try {
+
+            const jsonDirectory = path.join(process.cwd(), '')
+            const fileContents = await fs.readFile(jsonDirectory + '/config.json', 'utf8')
+            const data = JSON.parse(fileContents)
+            const id_despacho = despacho.id_despacho
+           const res = await axios.get( data.config.api_v1 + `despacho/products/${id_despacho}`,{
+              //withCredentials: true , 
+              headers: {
+                'Content-Type': 'application/json',
+              }              
+            },) 
+            const lista1 = await res.data     
+            console.log(JSON.stringify(lista1))
+            generateProductsPDF(lista1)
+            //setProductos(lista1)
+           } catch (error) {
+             console.error('error : ' + error);
+           }              
+        
+
+
+        
+    }
+
     const deletedespacho = async () => {
         let _despachos = despachos.filter((val) => val.id_despacho !== despacho.id_despacho)
         setdespachos(_despachos)
@@ -314,7 +343,7 @@ const createdespacho = async (datos) => {
             <>
                 <Button icon="pi pi-pencil" className="p-button-rounded p-button-success mr-2" onClick={() => editdespacho(rowData)} />
                 <Button icon="pi pi-trash" className="p-button-rounded p-button-warning mr-2" onClick={() => confirmDeletedespacho(rowData)} />
-                <Button icon="pi pi-print" className="p-button-rounded p-button-info"  />
+                <Button icon="pi pi-print" className="p-button-rounded p-button-info"  onClick={() => imprimirProductos(rowData)}  />
             </>
         );
     };
