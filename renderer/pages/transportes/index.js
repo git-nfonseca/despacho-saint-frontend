@@ -234,7 +234,7 @@ const createtransporte = async (datos) => {
         settransportes(_transportes)
         setDeleteProductsDialog(false)
         setSelectedtransportes(null)
-        toast.current.show({ severity: 'success', summary: 'Successful', detail: 'transportes Eliminados', life: 3000 });
+        toast.current.show({ severity: 'success', summary: 'Successful', detail: 'transportes Eliminados', life: 3000 })
     }
 
 
@@ -242,9 +242,8 @@ const createtransporte = async (datos) => {
         const val = (e.target && e.target.value) || '';
         let _transporte = { ...transporte };
         _transporte[`${name}`] = val;
-
         settransporte(_transporte);
-    };
+    }
 
 
 
@@ -256,8 +255,8 @@ const createtransporte = async (datos) => {
                    {/* <Button label="Eliminar" icon="pi pi-trash" className="p-button-danger" onClick={confirmDeleteSelected} disabled={!selectedtransportes || !selectedtransportes.length} />*/}
                 </div>
             </React.Fragment>
-        );
-    };
+        )
+    }
 
     const idBodyTemplate = (rowData) => {
         return (

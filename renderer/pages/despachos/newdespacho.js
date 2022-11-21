@@ -354,7 +354,7 @@ const createDespacho = async (datos) => {
           'estatus' : res.status,
           'ultimo_id': 0
       }
-      console.log(JSON.stringify(respuesta))
+      //console.log(JSON.stringify(respuesta))
       return await respuesta        
     } catch (e) {
         console.error('error : ' + e)

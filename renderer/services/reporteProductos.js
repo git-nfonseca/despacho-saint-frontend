@@ -1,20 +1,16 @@
 import jsPDF from "jspdf";
 import "jspdf-autotable";
 
-// Date Fns is used to format the dates we receive
-// from our API call
-  
-// define a generatePDF function that accepts a tickets argument
 export function generateProductsPDF(productos) {
   // initialize jsPDF
 
-  const doc = new jsPDF();
+  const doc = new jsPDF()
 
 
   let empresa, rif, direc1, direc2, telfono, fecha, numdespacho;
 
   // define the columns we want and their titles
-  const tableColumn = ["Código", "Descripcion", "Cantidad"];
+  const tableColumn = ["Código", "Descripcion", "Cantidad"]
   // define an empty array of rows
   const tableRows = [];
 
@@ -25,18 +21,6 @@ export function generateProductsPDF(productos) {
   telfono = productos[0].Telef
   fecha = productos[0].FechaE
   numdespacho = productos[0].numdespacho
-
-  // for each ticket pass all its data into an array
-  /*cxc.forEach(item => {
-    const Data = [
-      item.codigo,
-      item.nombre,
-      item.total_deuda,
-      item.telefono
-    ];   
-    // push each tickcet's info into a row
-    tableRows.push(Data);
-  });*/
 
   
   const body = [...productos.map(el => [el.CodItem, el.Descrip1, el.Cantidad])]
@@ -65,10 +49,8 @@ export function generateProductsPDF(productos) {
     head: [["Código", "Descripcion", "Cantidad"]],
     body: body,
     startY: 35 
-  });
+  })
 
-
-  //doc.autoTable(tableColumn, tableRows, { startY: 30 });
   doc.save(`report_${dateStr}.pdf`);
 }
 
