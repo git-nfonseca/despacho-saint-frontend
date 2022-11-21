@@ -200,6 +200,7 @@ const cerrarDespachos = async () => {
         },) 
         const respuesta = await res.data 
         if (res.status) {
+            setSelecteddespachos(null)
             getListaDedespachos()
             toast.current.show({ severity: 'success', summary: 'Successful', detail: 'despachos cerrados', life: 3000 });
         }
