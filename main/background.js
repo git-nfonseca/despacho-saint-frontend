@@ -24,7 +24,9 @@ if (isProd) {
   });
 
   if (isProd) {
-    await mainWindow.loadURL('app://./home.html');
+    //await mainWindow.loadURL('app://./home.html');
+    await mainWindow.loadURL('app://./login.html');
+    
   } else {
     const port = process.argv[2];
     await mainWindow.loadURL(`http://localhost:${port}/home`);

@@ -27,9 +27,18 @@ const AppMenu = () => {
         {
             label: 'Reportes',
             items: [
-                { label: 'Listado de Despachos', icon: 'pi pi-print', to: '/utilities/icons' },
+                { label: 'Listado de Despachos', icon: 'pi pi-print', to: '/home' },
             ]
         },
+
+        {
+            label: 'Salir',
+            items: [
+                { label: 'Salir', icon: 'pi pi-sign-out', to: '/' },
+            ]
+        },
+
+
     ]
 
     return (

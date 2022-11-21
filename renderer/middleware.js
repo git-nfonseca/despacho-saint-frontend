@@ -4,7 +4,6 @@ export async function middleware(request) {
 
   try {
     const jwt = request.cookies.get("Tokendespacho");
-    //console.log ('jjj: ' + request.url)
     if (!jwt) {
       console.log (request.url)
       return NextResponse.redirect(new URL("/auth/login/", request.url))

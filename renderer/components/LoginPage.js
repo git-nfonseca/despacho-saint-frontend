@@ -1,10 +1,10 @@
 import getConfig from 'next/config'
 import { useRouter } from 'next/router'
 import React, { useContext, useState, useRef } from 'react'
-import AppConfig from '../layout/AppConfig'
+import AppConfig from '../../../layout/AppConfig'
 import { Button } from 'primereact/button'
 import { Password } from 'primereact/password'
-import {LayoutContext} from '../layout/context/layoutcontext'
+import { LayoutContext } from '../../../layout/context/layoutcontext';
 import { InputText } from 'primereact/inputtext'
 import { classNames } from 'primereact/utils'
 import axios from "axios"
@@ -15,7 +15,6 @@ import { toast } from "react-toastify"
 
 import path from 'path'
 import { promises as fs } from 'fs'
-
 
 
 
